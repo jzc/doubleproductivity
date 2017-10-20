@@ -20,3 +20,8 @@ In total, we plan on having 2 full 3 week sprints for the essential features and
 Our second group meeting took place after we chose the idea for our project. We met at a table in the engineering center commons and brainstormed whether we wanted to make an Android app or website for the idea. We also went over the different coding experience each of us have, in order to get a better idea of how complex our project should be. After collaboration and compromise, we decided to make a website (since it would be less steep of a learning curve) that uses Python with Flask and SQLAlchemy to handle the backend and database. We chose this based on the fact that Justin has some experience doing Python/Flask and the rest of us had rudimentary knowledge of HTML/CSS. We closed our meeting by discussing our schedules for the following week and deciding what meeting times would be best to continue work on the project.
 
 ## Trello Screenshots
+
+![trello](/screenshots/trello.png)
+![checklist](/screenshots/checklist.png)
+![functional](/screenshots/functional.png)
+![priority2](/screenshots/priority2.png)
