@@ -21,7 +21,7 @@ Our second group meeting took place after we chose the idea for our project. We 
 
 ## Trello Screenshots
 
-![trello](/screenshots/trello.PNG)
-![checklist](/screenshots/checklist.PNG)
-![functional](/screenshots/functional.PNG)
-![priority2](/screenshots/priority2.PNG)
+![trello](screenshots/trello.PNG)
+![checklist](screenshots/checklist.PNG)
+![functional](screenshots/functional.PNG)
+![priority2](screenshots/priority2.PNG)
