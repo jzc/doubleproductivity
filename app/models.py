@@ -11,6 +11,7 @@ class User(db.Model):
     first = db.Column(db.String)
     last = db.Column(db.String)
     screen_name = db.Column(db.String)
+    passwordHash = db.Column(db.String)
     courses = db.relationship("Course", secondary=user_course)
 
 class Course(db.Model):
