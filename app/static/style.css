@@ -36,3 +36,13 @@
     display: flex;
     justify-content: space-between;
 }
+
+#content {
+    padding: 20px;
+}
+
+#posts {
+    background-color: #f3f3f3;
+    width: 960px;
+    padding: 10px;
+}

@@ -30,13 +30,10 @@
           <h2>login</h2>
         </div>
         <div id="content">
-          <p>the quick brown fox jumps over the lazy dog</p>
+          {% block content %}
+          {% endblock %}
         </div>
     </div>
-
-    {% block content %}
-    {% endblock %}
-
     <script src="{{ url_for('static', filename='main.js') }}"></script>
   </body>
 </html>
