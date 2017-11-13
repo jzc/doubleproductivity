@@ -15,14 +15,20 @@
   <body>
 
     <nav id="sidebar">
-        <a href="#">Class 1</a>
-        <a href="#">Class 2</a>
-        <a href="#">Class 2</a>
+        <a href="#">CSCI 3308</a>
+        <a href="#">CSCI 3104</a>
+        <a href="#">CSCI 2824</a>
     </nav>
 
-    <div id="content">
-        <h1>Content</h1>
-        <button id="expand">Click</button>
+    <div id="main">
+        <div id="header">
+          <button id="expand">expand</button>
+          <button id="close">close</button>
+          <h1>general</h1>
+        </div>
+        <div id="content">
+          <p>the quick brown fox jumps over the lazy dog</p>
+        </div>
     </div>
 
     {% block content %}
