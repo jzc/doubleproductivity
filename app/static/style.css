@@ -1,0 +1,21 @@
+#sidebar {
+    height: 100%;
+    width: 30%;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width .25s
+}
+
+#sidebar a {
+    color: red;
+    display: block;
+}
+
+#content {
+    background-color: #8b8282;
+    z-index: 1;
+    transition: margin-left .5s;
+    margin-left: 30%;
+}

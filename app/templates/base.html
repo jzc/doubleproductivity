@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    {% endblock %}
+  </head>
+  <body>
+
+    <nav id="sidebar">
+        <a href="#">Class 1</a>
+        <a href="#">Class 2</a>
+        <a href="#">Class 2</a>
+    </nav>
+
+    <div id="content">
+        <h1>Content</h1>
+        <button id="expand">Click</button>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
