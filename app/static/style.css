@@ -19,14 +19,12 @@
 
 #main {
     background-color: white;
-    height: 100%;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
     transition: all .5s;
-    /* margin-left: 30%; */
 }
 
 #header {
@@ -39,10 +37,22 @@
 
 #content {
     padding: 20px;
+    background-color: #f7f7f7;
 }
 
 #posts {
-    background-color: #f3f3f3;
     width: 960px;
     padding: 10px;
+}
+
+#posts li {
+    background-color: #ffffff;
+    list-style: none;
+    margin-bottom: 30px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+body {
+    font-family: "Open Sans", sans-serif
 }
