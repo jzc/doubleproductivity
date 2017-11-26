@@ -1,3 +1,5 @@
+from werkzeug.security import generate_password_hash, check_password_hash
+
 from . import db
 
 user_course = db.Table("user_course",
@@ -11,8 +13,19 @@ class User(db.Model):
     first = db.Column(db.String)
     last = db.Column(db.String)
     screen_name = db.Column(db.String)
-    passwordHash = db.Column(db.String)
     courses = db.relationship("Course", secondary=user_course)
+    password_hash = db.Column(db.String)
+
+    @property
+    def password(self):
+        raise AttributeError("password is not a readable attribute")
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class Course(db.Model):
     __tablename__ = "courses"
