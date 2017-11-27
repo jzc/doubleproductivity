@@ -18,8 +18,15 @@ manager.add_command("shell", Shell(make_context=make_shell_context))
 @manager.command
 def create_test_data():
     """Makes random test data."""
-    from tests.create_test_data import create_test_data as ctd
-    ctd(db, models)
+    from tests.create_test_data import create_test_data
+    create_test_data(db, models)
+
+@manager.command
+def test():
+    """Runs all tests."""
+    import unittest
+    tests = unittest.TestLoader().discover("tests")
+    unittest.TextTestRunner(verbosity=2).run(tests)
 
 if __name__ == "__main__":
     manager.run()
