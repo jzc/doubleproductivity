@@ -1,18 +1,25 @@
+from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from . import db
+from . import db, login_manager
+
+
 
 user_course = db.Table("user_course",
                        db.Column("user_id", db.Integer, db.ForeignKey("users.id"), primary_key=True),
                        db.Column("course_id", db.Integer, db.ForeignKey("courses.id"), primary_key=True))
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class User(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String)
     first = db.Column(db.String)
     last = db.Column(db.String)
-    screen_name = db.Column(db.String)
+    username = db.Column(db.String)
     courses = db.relationship("Course", secondary=user_course)
     password_hash = db.Column(db.String)
 

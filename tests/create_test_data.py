@@ -27,12 +27,12 @@ def create_test_data(db, models):
     for i in range(n_users):
         first = random.choice(words)
         last = random.choice(words)
-        screen_name = "%s.%s" % (first, last)
+        username = "%s.%s" % (first, last)
         data = {
             "first": first,
             "last": last,
-            "screen_name": screen_name,
-            "email": "%s@%s.com" % (screen_name, random.choice(words)),
+            "username": username,
+            "email": "%s@%s.com" % (username, random.choice(words)),
             "courses": random.sample(courses, random.randint(1, 5)),
         }
         u = models["User"](**data)

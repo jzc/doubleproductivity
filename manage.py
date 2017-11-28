@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#TODO: remove flask_script, flask has a cli interface
 import inspect
 
 from flask_script import Manager, Shell

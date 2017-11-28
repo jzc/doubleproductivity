@@ -11,6 +11,7 @@ flask = "*"
 flask-script = "*"
 flask-sqlalchemy = "*"
 flask-login = "*"
+flask-wtf = "*"
 
 
 [dev-packages]

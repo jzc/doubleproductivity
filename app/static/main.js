@@ -12,3 +12,11 @@ function close() {
     document.getElementById("main").style.marginLeft="0%";
     document.getElementById("main").style.width="100%";
 }
+
+flash_list = document.getElementById("flashes").children[0].children;
+for (let i = 0; i < flash_list.length; i++)
+{
+    flash_list[i].children[0].onclick = function() {
+        this.parentElement.remove()
+    }
+}

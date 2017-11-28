@@ -54,5 +54,41 @@
 }
 
 body {
-    font-family: "Open Sans", sans-serif
+    font-family: sans-serif
+}
+
+#flashes {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+}
+
+#flashes li {
+    list-style: none;
+    border: 1px solid white transparent;
+    border-radius: 4px;
+    width: 500px;
+    padding: 15px;
+    margin: 15px;
+}
+
+#flashes li span {
+    opacity: .5;
+    float: right;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+#flashes li span:hover {
+    opacity: 1;
+}
+
+.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
