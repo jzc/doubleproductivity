@@ -25,6 +25,7 @@
     left: 0;
     z-index: 1;
     transition: all .5s;
+    min-height: 100%
 }
 
 #header {
