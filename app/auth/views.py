@@ -17,3 +17,7 @@ def login():
             return redirect(request.args.get("next") or url_for("home.home"))
         flash("Invalid username or password", "error")
     return render_template("login.html", form=form)
+
+@auth.route("/register", methods=["POST", "GET"])
+def register():
+    pass
