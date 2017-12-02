@@ -173,3 +173,30 @@ body {
 .class-name h1 {
     margin: 0px;
 }
+
+body {
+  margin: 40px;
+}
+
+
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+.row-item {
+    flex-grow: 1;
+      background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 100%;
+  margin: 1px;
+}
+
+.row-container {
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+}
