@@ -5,7 +5,9 @@ from ..models import User, Post
 
 @home.route("/")
 def home():
-    return render_template("index.html", posts=Post.query.all()[:10])
+    posts = Post.query.all()
+    posts = [p for p in posts if len(p.title.split()) < 15]
+    return render_template("index.html", posts=posts)
 
 # @home.route("/thing/<screen_name>")
 # def user(screen_name):

@@ -34,6 +34,7 @@
     color: #cfb361;
     background-color:#272727;
     padding: 5px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
 }
@@ -52,13 +53,13 @@
 #posts li {
     background-color: #ffffff;
     list-style: none;
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-bottom: 28px;
+    padding: 1px 15px 1px 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
 body {
-    font-family: sans-serif
+    font-family: "Noto Sans", sans-serif
 }
 
 #flashes {
@@ -110,4 +111,41 @@ body {
 
 .login-form {
     width: 350px;
+}
+
+#posts li h1 {
+    font-size: 1.4em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d2d2d2;
+    padding-bottom: 6px;
+    margin-bottom: -7px;
+}
+
+#posts li h2 {
+    font-size: 1em;
+    color: #a7a7a7;
+}
+
+#posts li a {
+    text-decoration: none
+}
+
+#posts li h1 a {
+    color: black;
+}
+
+#posts li h2 a {
+    color: #ae903a;
+}
+
+.header-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#header h1, #header h2 {
+    margin: 0px;
+    vertical-align: middle;
 }
