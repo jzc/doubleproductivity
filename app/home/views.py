@@ -7,10 +7,15 @@ from ..models import User, Post
 def homeIndex():
     return render_template("index.html", posts=Post.query.all()[:10])
     
-@home.route("/create_post")
+@home.route("/create_post", methods=["POST","GET"])
 def createPost():
-	form = PostForm()
-	return render_template("create_post.html", form=form)
+    print("hello")
+    form = PostForm()
+    if form.validate_on_submit():
+        # logic for putting post in database
+        raise Exception
+        pass
+    return render_template("create_post.html", form=form)
 
 # @home.route("/thing/<screen_name>")
 # def user(screen_name):
