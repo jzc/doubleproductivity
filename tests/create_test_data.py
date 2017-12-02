@@ -1,19 +1,13 @@
-import sys
-sys.path.append('..')
-
+import os
 import random
 
-from app import create_app
-
-with create_app("development").app_context():
-    from app import db
-    from app.models import *
+def create_test_data(db, models):
     db.drop_all()
     db.create_all()
+
     # create some courses
     courses = []
-
-    with open("course.csv") as f:
+    with open("%s/courses.csv" % os.path.dirname(__file__)) as f:
         next(f)
         for line in f:
             tokens = line.strip().split(",")
@@ -22,26 +16,26 @@ with create_app("development").app_context():
                 "course_number": tokens[1],
                 "course_name": tokens[2],
             }
-            c = Course(**data)
+            c = models["Course"](**data)
             courses.append(c)
             db.session.add(c)
 
     # create some users
     users = []
-    words = [line.strip() for line in open("words.txt", "r")]
+    words = [line.strip() for line in open("%s/words.txt" % os.path.dirname(__file__), "r")]
     n_users = 1000
     for i in range(n_users):
         first = random.choice(words)
         last = random.choice(words)
-        screen_name = "%s.%s" % (first, last)
+        username = "%s.%s" % (first, last)
         data = {
             "first": first,
             "last": last,
-            "screen_name": screen_name,
-            "email": "%s@%s.com" % (screen_name, random.choice(words)),
+            "username": username,
+            "email": "%s@%s.com" % (username, random.choice(words)),
             "courses": random.sample(courses, random.randint(1, 5)),
         }
-        u = User(**data)
+        u = models["User"](**data)
         users.append(u)
         db.session.add(u)
 
@@ -58,7 +52,7 @@ with create_app("development").app_context():
             "user": random.choice(users),
             "course": random.choice(courses),
         }
-        p = Post(**data)
+        p = models["Post"](**data)
         posts.append(p)
         db.session.add(p)
 
@@ -72,7 +66,7 @@ with create_app("development").app_context():
             "post": random.choice(posts),
             "user": random.choice(users),
         }
-        c = Comment(**data)
+        c = models["Comment"](**data)
         db.session.add(c)
 
     db.session.commit()
