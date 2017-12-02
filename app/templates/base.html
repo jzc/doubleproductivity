@@ -27,7 +27,16 @@
         <button id="close">close</button>
       </div>
       <h1>general</h1>
-      <h2>{% if current_user.is_authenticated %}Hello, {{ current_user.first }}{% else %}login{% endif %}</h2>
+      <div class="dropdown">
+          <button onclick="Hiuser()">
+  <!--<span>Hi user</span>-->
+  Hi User</button>
+
+  <div class="dropdown-content">
+    <p><a href="C:\Users\User.Lenovo-PC\Dropbox\3308\3308 Project\FormTest">Login</a></p>
+    <p><a href="http://www.google.com">Sign up</a></p>
+  </div>
+</div>
     </div>
     <div id="content">
       {% block content %} {% endblock %}
