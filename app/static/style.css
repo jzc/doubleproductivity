@@ -164,12 +164,42 @@ body {
     height: 700px;  
 }
 
-.class-name {
+#info-header {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-bottom-color: #d2d2d2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.class-name h1 {
-    margin: 0px;
+#add-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    border-radius: .7em;
+    background-color: #8ba1ff;
+    height: 1.3em;
+    width: 1.3em;
+}
+
+#add-class:hover {
+    cursor: pointer;
+    background-color: #bcc9ff;
+}
+
+#info-header h1 {
+    margin: 10px 0px 10px 0px;
+}
+
+.hamburger {
+
+}
+
+.bar {
+    background-color: white;
+    width: 35px;
+    height: 5px;
+    margin: 5px 0;
 }
