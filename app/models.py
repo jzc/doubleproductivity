@@ -1,5 +1,7 @@
+from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import URLSafeTimedSerializer
 
 from . import db, login_manager
 
@@ -13,13 +15,26 @@ user_course = db.Table("user_course",
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+def confirm_token(token, expiration=3600):
+    serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+    try:
+        email = serializer.loads(
+            token,
+            salt=current_app.config['SECURITY_PASSWORD_SALT'],
+            max_age=expiration
+        )
+    except:
+        return None
+    return email
+
 class User(db.Model, UserMixin):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String)
+    confirmed = db.Column(db.Boolean)
+    email = db.Column(db.String, unique=True)
     first = db.Column(db.String)
     last = db.Column(db.String)
-    username = db.Column(db.String)
+    username = db.Column(db.String, unique=True)
     courses = db.relationship("Course", secondary=user_course)
     password_hash = db.Column(db.String)
 
@@ -33,6 +48,10 @@ class User(db.Model, UserMixin):
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def generate_confirmation_token(self):
+        return URLSafeTimedSerializer(current_app.config['SECRET_KEY']).dumps(self.email, salt=current_app.config['SECURITY_PASSWORD_SALT'])
+
 
 class Course(db.Model):
     __tablename__ = "courses"

@@ -3,7 +3,7 @@
 {% block content %}
 <form method="POST" class="login-form">
     {{ form.csrf_token }}
-    <div class="form-row">{{ form.username.label }}{{ form.username() }}</div>
+    <div class="form-row">{{ form.login.label }}{{ form.login() }}</div>
     <div class="form-row">{{ form.password.label }}{{ form.password() }}</div>
     <div class="form-row">{{ form.remember_me.label }}{{ form.remember_me() }}</div>
     <div class="form-row">{{ form.submit()  }}</div>
