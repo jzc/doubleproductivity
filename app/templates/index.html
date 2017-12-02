@@ -4,7 +4,7 @@
 <div id="posts">
     <ul>
         {% for post in posts %}
-        <li>
+        <li class="card">
             <div>
             {% if post.is_link %}
                 <h1><a href=#>{{ post.title }}</a></h1>
@@ -16,5 +16,10 @@
         </li>
         {% endfor %}
     </ul>
+</div>
+<div id="info" class="card">
+    <div class="class-name">
+        <h1>CSCI 1300</h1>
+    </div>
 </div>
 {% endblock %}
