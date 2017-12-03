@@ -1,18 +1,24 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div id="posts">
     <ul>
         {% for post in posts %}
         <li class="card">
             <div>
-            {% if post.is_link %}
-                <h1><a href=#>{{ post.title }}</a></h1>
-            {% else %}
-                <h1><a href=#>{{ post.title }}</a></h1>
-            {% endif %}
+                {% if post.is_link %}
+                <h1>
+                    <a href=#>{{ post.title }}</a>
+                </h1>
+                {% else %}
+                <h1>
+                    <a href=#>{{ post.title }}</a>
+                </h1>
+                {% endif %}
             </div>
-            <div><h2>by <a href=#>{{ post.user.username }}</a></h2></div>
+            <div>
+                <h2>by
+                    <a href=#>{{ post.user.username }}</a>
+                </h2>
+            </div>
         </li>
         {% endfor %}
     </ul>
@@ -22,17 +28,16 @@
         <h1>CSCI 1300</h1>
         <div id="add-class">+</div>
     </div>
-<div class="row-container">
-<div class="row">
-    <div class="row-item">A</div> 
-    <div class="row-item">B</div>
+    <p>This class teaches techniques for writing computer programs in higher level programming languages to solve problems of interest in a range of application domains. This class is intended for students with little to no experience in computing or programming</p>
+    <div class="row-container">
+        <div class="row">
+            <div class="row-item">A</div>
+            <div class="row-item">B</div>
+        </div>
+        <div class="row">
+            <div class="row-item">C</div>
+            <div class="row-item">D</div>
+        </div>
     </div>
-<div class="row">
-    <div class="row-item">C</div> 
-    <div class="row-item">D</div>
-    </div>    
-</div>
-       
-      
 </div>
 {% endblock %}
