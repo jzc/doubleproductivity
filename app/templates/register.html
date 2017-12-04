@@ -1,14 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="POST" class="login-form">
-    {{ form.csrf_token }}
-    <div class="form-row">{{ form.first.label }}{{ form.first() }}</div>
-    <div class="form-row">{{ form.last.label }}{{ form.last() }}</div>
-    <div class="form-row">{{ form.username.label }}{{ form.username() }}</div>
-    <div class="form-row">{{ form.email.label }}{{ form.email() }}</div>
-    <div class="form-row">{{ form.password.label }}{{ form.password() }}</div>
-    <div class="form-row">{{ form.confirm_password.label }}{{ form.confirm_password() }}</div>
-    <div class="form-row">{{ form.submit()  }}</div>
-</form>
+<div>
+    <form method="POST" class="login-form card">
+        {{ form.csrf_token }}
+        <div class="form-row">{{ form.first.label }}{{ form.first() }}</div>
+        <div class="form-row">{{ form.last.label }}{{ form.last() }}</div>
+        <div class="form-row">{{ form.username.label }}{{ form.username() }}</div>
+        <div class="form-row">{{ form.email.label }}{{ form.email() }}</div>
+        <div class="form-row">{{ form.password.label }}{{ form.password() }}</div>
+        <div class="form-row">{{ form.confirm_password.label }}{{ form.confirm_password() }}</div>
+        <div class="form-row">{{ form.submit()  }}</div>
+    </form>
+</div>
 {% endblock %}
