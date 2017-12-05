@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div id="posts">
+    <ul>
+        {% for post in course.posts %}
+        <li class="card">
+            <div>
+                {% if post.is_link %}
+                <h1>
+                    <a href=#>{{ post.title }}</a>
+                </h1>
+                {% else %}
+                <h1>
+                    <a href=#>{{ post.title }}</a>
+                </h1>
+                {% endif %}
+            </div>
+            <div>
+                <h2>by
+                    <a href=#>{{ post.user.username }}</a>
+                </h2>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="info" class="card">
+    <div id="info-header">
+        <h1>{{ course.department.upper() }} {{ course.course_number }}</h1>
+        <div id="add-class">+</div>
+    </div>
+    <p>This class teaches techniques for writing computer programs in higher level programming languages to solve problems of interest in a range of application domains. This class is intended for students with little to no experience in computing or programming</p>
+    <div class="row-container">
+        <div class="row">
+            <div class="row-item">A</div>
+            <div class="row-item">B</div>
+        </div>
+        <div class="row">
+            <div class="row-item">C</div>
+            <div class="row-item">D</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
