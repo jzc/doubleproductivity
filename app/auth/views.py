@@ -15,7 +15,7 @@ def login():
         if user is not None and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
             flash("Succsefully logged in.", "success")
-            return redirect(request.args.get("next") or url_for("home.home"))
+            return redirect(request.args.get("next") or url_for("home.show_home"))
         flash("Invalid username/email or password", "error")
     flash_errors(form)
     return render_template("login.html", form=form)
@@ -25,7 +25,7 @@ def login():
 def logout():
     logout_user()
     flash("You have been logged out.", "success")
-    return redirect(url_for("home.home"))
+    return redirect(url_for("home.show_home"))
 
 @auth.route("/register", methods=["POST", "GET"])
 def register():
@@ -62,9 +62,9 @@ def register():
 @login_required
 def confirm(token):
     if current_user.confirmed:
-        return redirect(url_for("home.home"))
+        return redirect(url_for("home.show_home"))
     if current_user.confirm(token):
         flash("You have confirmed your account. Thanks!", "success")
     else:
         flash("The confirmation link is invalid or has expired.", "success")
-    return redirect(url_for("home.home"))
+    return redirect(url_for("home.show_home"))
