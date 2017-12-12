@@ -26,10 +26,13 @@ def show_course(course):
 @course.route("/<course>/resources")
 def show_resources(course):
     course = get_course(course)
-    return """<object data="%s" type="application/pdf" width="100%%" height="100%%">
-   <p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>.</p>
+    return """
+<object data="{0}" type="application/pdf" width="100%" height="100%">
+   <p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="{0}">Download PDF</a>.</p>
 </object>
-""" % (Resource.query.first().get_file_path())
+""".format(url_for("home.download_file", filename=Resource.query.first().get_file_path()))
+
+
 @course.route("/<course>/resources/upload", methods=["GET", "POST"])
 def upload_resource(course):
     course = get_course(course)
@@ -40,7 +43,7 @@ def upload_resource(course):
         filename, ext = os.path.splitext(file.filename)
         resource = Resource(
             course=course,
-            filename=filename+ext,
+            filename=filename+ext, 
             uuid=fuuid
         )
         file.save(os.path.join(current_app.instance_path, "uploads", fuuid+ext))

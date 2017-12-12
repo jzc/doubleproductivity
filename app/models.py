@@ -122,4 +122,4 @@ class Resource(db.Model):
 
     def get_file_path(self):
         ext = os.path.splitext(self.filename)[1]
-        return os.path.join(current_app.instance_path, "uploads", self.uuid+ext)
+        return self.uuid+ext

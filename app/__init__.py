@@ -1,4 +1,6 @@
-from flask import Flask, flash
+import os
+
+from flask import Flask, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
