@@ -40,7 +40,7 @@ body {
 #header {
     color: #cfb361;
     background-color:#272727;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
     height: 60px;
     align-items: center;
 }
@@ -86,6 +86,18 @@ body {
 .dropdown:hover .dropdown-content {
     display: block;
 
+}
+
+.bar {
+    background-color: #cfb361;
+    height: 5px;
+    width: 30px;
+    margin: 5px 0px 2px 0px;
+    border-radius: 2px
+}
+
+.hamburger {
+    cursor: pointer;
 }
 
 /* css for the content (everything under the header) */
