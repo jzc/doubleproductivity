@@ -52,6 +52,23 @@ class User(db.Model, UserMixin):
     def generate_confirmation_token(self):
         return URLSafeTimedSerializer(current_app.config['SECRET_KEY']).dumps(self.email, salt=current_app.config['SECURITY_PASSWORD_SALT'])
 
+    def confirm(self, token, expiration=3600):
+        serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+        try:
+            email = serializer.loads(
+                token,
+                salt=current_app.config['SECURITY_PASSWORD_SALT'],
+                max_age=expiration
+            )
+        except:
+            return False
+        if email != self.email:
+            return False
+        self.confirmed = True
+        db.session.add(self)
+        db.session.commit()
+        return True
+
 
 class Course(db.Model):
     __tablename__ = "courses"

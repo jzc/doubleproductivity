@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
@@ -22,3 +22,8 @@ def create_app(config_name):
     app.register_blueprint(auth_blueprint)
 
     return app
+
+def flash_errors(form):
+    for field, errors in form.errors.items():
+        for error in errors:
+            flash("%s - %s" % (getattr(form, field).label.text, error), "error")

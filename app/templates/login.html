@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="POST" class="login-form">
-    {{ form.csrf_token }}
-    <div class="form-row">{{ form.login.label }}{{ form.login() }}</div>
-    <div class="form-row">{{ form.password.label }}{{ form.password() }}</div>
-    <div class="form-row">{{ form.remember_me.label }}{{ form.remember_me() }}</div>
-    <div class="form-row">{{ form.submit()  }}</div>
-</form>
+<div>
+    <form method="POST" class="login-form card">
+        {{ form.csrf_token }}
+        <div class="form-row">{{ form.login.label }}{{ form.login() }}</div>
+        <div class="form-row">{{ form.password.label }}{{ form.password() }}</div>
+        <div class="form-row">{{ form.remember_me.label }}{{ form.remember_me() }}</div>
+        <div class="form-row-submit">{{ form.submit()  }}</div>
+    </form>
+</div>
 {% endblock %}
