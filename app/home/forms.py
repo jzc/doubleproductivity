@@ -9,4 +9,6 @@ class PostForm(FlaskForm):
 	course = SelectField("Class", choices=[(1, "1300"),(2,"3104"),(3,"2824")], validators=[Required()], coerce=int)
 	category = SelectField("Category", choices=[(1,"Tutoring"),(2,"Question"),(3,"Bug Help")], validators=[Required()], coerce=int)
 	submit = SubmitField("Post")
+
+
 	
