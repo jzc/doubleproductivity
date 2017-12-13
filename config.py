@@ -16,7 +16,13 @@ class DevelopmentConfig(Config):
     TEMPLATES_AUTO_RELOAD = True
     DEBUG = True
 
+class TestingConfig(Config):
+    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    TESTING = True
+    WTF_CSRF_ENABLED = False
+
 config = {
     "development": DevelopmentConfig,
-    "production": Config
+    "production": Config,
+    "testing": TestingConfig
 }

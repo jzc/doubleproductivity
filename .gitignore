@@ -1,3 +1,4 @@
 .vscode
 *.sqlite
 *.pyc
+instance

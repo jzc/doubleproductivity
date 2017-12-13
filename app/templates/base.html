@@ -6,9 +6,7 @@
   <title>{% block title %}{% endblock %}</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"> 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> {% endblock %}
 </head>
 
@@ -22,12 +20,31 @@
 
   <div id="main">
     <div id="header">
-      <div class="logo">
-        <button id="expand">expand</button>
-        <button id="close">close</button>
-      </div>
+      <span>
+        <div class="logo">
+          <!-- <button id="expand">expand</button>
+          <button id="close">close</button> -->
+          <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+      </span>
       <h1>general</h1>
-      <h2>{% if current_user.is_authenticated %}Hello, {{ current_user.first }}{% else %}login{% endif %}</h2>
+      <span>
+        {% if not current_user.is_authenticated %}
+        <h2><a href="{{ url_for('auth.login') }}">login</a></h1>
+        {% else %}
+        <div class="dropdown">
+          <button onclick="Hiuser()">Hello {{ current_user.first }}</button>
+          <div class="dropdown-content">
+            <p><a href="{{ url_for ( 'auth.login' ) }}">Login</a></p>
+            <p><a href="{{ url_for ( 'auth.register' ) }}">Sign up</a></p>
+          </div>
+        </div>
+        {% endif %}
+      </span>
     </div>
     <div id="content">
       {% block content %} {% endblock %}

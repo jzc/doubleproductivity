@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <form method="POST" enctype="multipart/form-data" class="card">
+        {{ form.csrf_token }}
+        <div class="form-row">{{ form.resource.label }}{{ form.resource() }}</div>
+        <div class="form-row-submit">{{ form.submit()  }}</div>
+    </form>
+</div>
+{% endblock %}

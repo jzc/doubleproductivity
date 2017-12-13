@@ -1,3 +1,5 @@
+import os
+
 from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -52,6 +54,23 @@ class User(db.Model, UserMixin):
     def generate_confirmation_token(self):
         return URLSafeTimedSerializer(current_app.config['SECRET_KEY']).dumps(self.email, salt=current_app.config['SECURITY_PASSWORD_SALT'])
 
+    def confirm(self, token, expiration=3600):
+        serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+        try:
+            email = serializer.loads(
+                token,
+                salt=current_app.config['SECURITY_PASSWORD_SALT'],
+                max_age=expiration
+            )
+        except:
+            return False
+        if email != self.email:
+            return False
+        self.confirmed = True
+        db.session.add(self)
+        db.session.commit()
+        return True
+
 
 class Course(db.Model):
     __tablename__ = "courses"
@@ -60,6 +79,7 @@ class Course(db.Model):
     course_number = db.Column(db.Integer)
     course_name = db.Column(db.String)
     users = db.relationship("User", secondary=user_course)
+    description = db.Column(db.String)
 
 class Post(db.Model):
     __tablename__ = "posts"
@@ -73,6 +93,7 @@ class Post(db.Model):
     course = db.relationship("Course", backref="posts")
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
+    created_at = db.Column(db.Integer)
 
 class Comment(db.Model):
     __tablename__ = "comments"
@@ -84,3 +105,21 @@ class Comment(db.Model):
     content = db.Column(db.String)
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
+    created_at = db.Column(db.Integer)
+
+class Resource(db.Model):
+    __tablename__ = "resources"
+    id = db.Column(db.Integer, primary_key=True)
+    course_id = db.Column(db.Integer, db.ForeignKey("courses.id"))
+    course = db.relationship("Course", backref="resources")
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user = db.relationship("User", backref="resources")
+    uuid = db.Column(db.String)
+    filename = db.Column(db.String)
+    title = db.Column(db.String)
+    description = db.Column(db.String)
+    created_at = db.Column(db.Integer)
+
+    def get_file_path(self):
+        ext = os.path.splitext(self.filename)[1]
+        return self.uuid+ext
