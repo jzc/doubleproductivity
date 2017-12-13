@@ -8,13 +8,7 @@
 			{{ form.csrf_token }}
 			<div>{{ form.title.label(class="form-label") }}<br>{{ form.title(class="create-post-field") }}</div>
 			<div>{{ form.content.label(class="form-label") }}<br>{{ form.content(class="create-post-field") }}</div>
-			<div class="form-row">{% for subfield in form.is_link %}
-				<div>
-					{{ subfield }}
-					{{ subfield.label }}
-				</div>
-				{% endfor %}
-			</div>
+			<div>{{ form.is_link.label }}{{ form.is_link() }}</div>
 			<div>{{ form.course.label }}{{ form.course() }}</div>
 			<div>{{ form.category.label }}{{ form.category() }}</div>
 			<div>{{ form.submit() }}
