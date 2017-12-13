@@ -4,15 +4,7 @@
         {% for post in course.posts %}
         <li class="card">
             <div>
-                {% if post.is_link %}
-                <h1>
-                    <a href=#>{{ post.title }}</a>
-                </h1>
-                {% else %}
-                <h1>
-                    <a href=#>{{ post.title }}</a>
-                </h1>
-                {% endif %}
+                <h1><a href="{{ url_for('course.show_post', course=post.course.department + post.course.course_number|string,id=post.id ) }}">{{ post.title }}</a></h1>
             </div>
             <div>
                 <h2>by
