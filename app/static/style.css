@@ -107,6 +107,7 @@ body {
     padding: 20px;
     background-color: #f7f7f7;
     flex-grow: 1;
+    align-items: flex-start;
 }
 
 .card {
@@ -278,4 +279,76 @@ body {
     height: 50%;
     display: flex;
     flex-direction: column;
+}
+
+/* resource css */
+.resources {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload {
+    padding: 15px;
+    min-width: 500px;    
+    display: flex;
+    flex-direction: column
+}
+
+.upload h1 {
+    font-size: 1.4em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d2d2d2;
+    padding-bottom: 7px;
+    margin-top: 0px;
+}
+
+.upload form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+}
+
+.upload .form-row * {
+    flex: 1;
+}
+
+.resources li {
+    list-style: none;
+    margin-bottom: 28px;
+    padding: 1px 15px 1px 15px;
+    display: flex;
+    padding: 5px;
+}
+
+.thumb {
+    flex: 1;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d2d2d2;
+    margin: 5px;
+}
+
+.resources {
+    width: 960px;
+}
+
+.resources li h1 {
+    font-size: 1.4em;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #d2d2d2;
+    padding-bottom: 6px;
+    margin-bottom: -7px;
+}
+
+.resources li h2 {
+    font-size: 1em;
+    color: #a7a7a7;
+}
+
+.resource-info {
+    flex: 20;
+    padding: 5px;
 }

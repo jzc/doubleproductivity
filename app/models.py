@@ -1,4 +1,7 @@
 import os
+import time
+import uuid
+import subprocess
 
 from flask import current_app
 from flask_login import UserMixin
@@ -114,12 +117,25 @@ class Resource(db.Model):
     course = db.relationship("Course", backref="resources")
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     user = db.relationship("User", backref="resources")
-    uuid = db.Column(db.String)
+    uuid_filename = db.Column(db.String)
+    thumb_filename = db.Column(db.String)
     filename = db.Column(db.String)
     title = db.Column(db.String)
     description = db.Column(db.String)
     created_at = db.Column(db.Integer)
 
-    def get_file_path(self):
-        ext = os.path.splitext(self.filename)[1]
-        return self.uuid+ext
+    def __init__(self, course=None, user=None, filename=None, title=None, description=None):
+        self.course = course
+        self.user = user
+        self.filename = filename
+        self.title = title
+        self.description = description
+        self.created_at = int(time.time())
+        _, ext = os.path.splitext(filename)
+        self.uuid_filename = str(uuid.uuid4())+ext
+
+    def make_thumb(self):
+        fuuid, ext = os.path.splitext(self.uuid_filename)
+        if ext == ".pdf":
+            self.thumb_filename = "thumb-%s.png" % fuuid
+            subprocess.call(["convert", "instance/uploads/%s[0]" % self.uuid_filename, "instance/uploads/"+self.thumb_filename])
