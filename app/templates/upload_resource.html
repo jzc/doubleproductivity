@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <form method="POST" enctype="multipart/form-data" class="card">
+<div class="card upload">
+    <h1>Upload resource</h1>
+    <form method="POST" enctype="multipart/form-data">
         {{ form.csrf_token }}
+        <div class="form-row">{{ form.title.label }}{{ form.title() }}</div>
+        <div class="form-row">{{ form.description.label(style="flex:1") }}{{ form.description(style="flex: 1") }}</div>
         <div class="form-row">{{ form.resource.label }}{{ form.resource() }}</div>
         <div class="form-row-submit">{{ form.submit()  }}</div>
     </form>

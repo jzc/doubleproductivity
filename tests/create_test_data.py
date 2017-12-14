@@ -1,5 +1,7 @@
 import os
 import random
+import csv
+import shutil
 
 def create_test_data(db, models):
     db.drop_all()
@@ -68,5 +70,33 @@ def create_test_data(db, models):
         }
         c = models["Comment"](**data)
         db.session.add(c)
+
+
+    admin = models["User"](
+        first="Admin",
+        last="Nimda",
+        email="admin@admin.com", 
+        confirmed=True,
+        username="admin",
+        password="password"
+    )
+
+    db.session.add(admin)
+
+    shutil.rmtree("instance/uploads")
+    os.mkdir("instance/uploads")
+    algo = models["Course"].query.filter_by(course_name="Algorithms").first()
+    with open("%s/resources.csv" % os.path.dirname(__file__)) as f:
+        r = csv.reader(f)
+        for title, description, filename in r:
+            r = models["Resource"](
+                course=algo,
+                user=admin,
+                filename=filename,
+                title=title,
+                description=description
+            )
+            shutil.copyfile("tests/resources/"+filename, "instance/uploads/"+r.uuid_filename)
+            r.make_thumb()
 
     db.session.commit()

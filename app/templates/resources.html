@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="resources">
+    <ul>
+        {% for resource in resources %}
+        <li class="card">
+            <div class="thumb">
+                {% if resource.thumb_filename %}
+                <img src="{{ url_for('home.download_file', filename=resource.thumb_filename) }}" height="100px" width="100px">
+                {% endif %}
+            </div>
+            <div class="resource-info">
+                <h1>{{ resource.title }}</h1>
+                <h2>by <a>{{ resource.user.username }}</a></h2>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
