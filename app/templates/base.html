@@ -16,6 +16,7 @@
     <a href="#">CSCI 3308</a>
     <a href="#">CSCI 3104</a>
     <a href="#">CSCI 2824</a>
+    <a href="{{ url_for('home.show_home') }}">Home</a>
   </nav>
 
   <div id="main">
@@ -34,15 +35,19 @@
       <h1>general</h1>
       <span>
         {% if not current_user.is_authenticated %}
-        <h2><a href="{{ url_for('auth.login') }}">login</a></h1>
+        <h2><a href="{{ url_for('auth.login') }}">login</a></h1> 
+        <h3><a href="{{ url_for ( 'auth.register' ) }}">Sign up!</a></h3>
         {% else %}
-        <div class="dropdown">
+        <!--<div class="dropdown">
           <button onclick="Hiuser()">Hello {{ current_user.first }}</button>
           <div class="dropdown-content">
             <p><a href="{{ url_for ( 'auth.login' ) }}">Login</a></p>
             <p><a href="{{ url_for ( 'auth.register' ) }}">Sign up</a></p>
+
           </div>
+
         </div>
+        </h2>-->
         {% endif %}
       </span>
     </div>
