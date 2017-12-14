@@ -2,9 +2,10 @@ import re
 import os
 
 from flask import abort, render_template, url_for, current_app, flash, redirect
+from flask_login import current_user, login_required
 
 from . import course
-from .forms import ResourceUploadForm 
+from .forms import ResourceUploadForm, PostForm 
 from .. import db
 from ..models import Course, Resource, Post
 
@@ -58,3 +59,30 @@ def show_post(course, id):
     course = get_course(course)
     post = Post.query.get(id)
     return render_template("post.html",post=post)
+
+@course.route("/<course>/create_post", methods=["POST","GET"])
+@login_required
+def createPost(course):
+    course_url = course
+    course = get_course(course)
+    print("hello")
+    form = PostForm()
+    if form.validate_on_submit():
+        # logic for putting post in database
+        if (form.is_link):
+            pass
+            # check if content is a url
+            
+        new_post = Post(is_link=form.is_link.data, 
+                                title=form.title.data,
+                                content=form.content.data, 
+                                user=current_user,
+                                #needs course info
+                                course=course,
+                                upvotes=0,
+                                downvotes=0)
+        db.session.add(new_post)
+        db.session.commit()
+        # TODO: flash?
+        return redirect(url_for("course.show_post", course=course_url, id=new_post.id))
+    return render_template("create_post.html", form=form)

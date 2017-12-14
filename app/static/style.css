@@ -250,7 +250,20 @@ body {
 
 .login-form {
     width: 350px;
-    padding: 20px
+    padding: 20px;
+}
+.post-form {
+	font-size: 24px;
+	width: 500px;	
+}
+
+.create-post-field {
+	width: 500px;
+	margin: 10px;
+}
+
+.radio-button-align {
+	display: inline;
 }
 
 /* class sidebar css */

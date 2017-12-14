@@ -4,6 +4,7 @@ from flask import render_template, send_from_directory, current_app
 
 from . import home
 from ..models import User, Post
+from flask_login import current_user, login_required
 
 @home.route("/")
 def show_home():
