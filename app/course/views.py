@@ -5,8 +5,8 @@ from flask import abort, render_template, url_for, current_app, flash, redirect
 
 from . import course
 from .forms import ResourceUploadForm 
-from .. import db, flash_errors
-from ..models import Course, Resource
+from .. import db
+from ..models import Course, Resource, Post
 
 course_regex = re.compile("([A-Za-z]{4})([0-9]{4})")
 
@@ -52,3 +52,9 @@ def upload_resource(course):
         return redirect(url_for("course.show_resources", course="atoc1050"))
     flash_errors(form)
     return render_template("upload_resource.html", form=form)
+
+@course.route("/<course>/post/<id>")
+def show_post(course, id):
+    course = get_course(course)
+    post = Post.query.get(id)
+    return render_template("post.html",post=post)

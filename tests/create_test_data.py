@@ -59,7 +59,7 @@ def create_test_data(db, models):
         db.session.add(p)
 
     # create some comments
-    n_comments = 1000
+    n_comments = 10000
     for i in range(n_comments):
         data = {
             "content": ' '.join(random.sample(words, random.randint(1,50))),
