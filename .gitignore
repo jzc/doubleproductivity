@@ -2,4 +2,3 @@
 *.sqlite
 *.pyc
 instance
-tests/resources
