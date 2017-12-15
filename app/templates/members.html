@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class = " members">
+	<ul>
+        {% for user in course.users %}
+        <li class=" card membernames">
+            <div>
+                <h1>
+                    <a href=#>{{ user.username }}</a>
+                </h1>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -431,10 +431,18 @@ body {
 .check-label {
 	margin-left: 100px;
 	border: 20px;
-
 }
 
 .create-post-form {
 	width: 700px;
-	padding: 20px;
+    padding: 20px;
+}
+
+.members a {
+    color: #ae903a;
+    text-decoration: none;
+}
+
+.members li {
+    list-style: none;
 }

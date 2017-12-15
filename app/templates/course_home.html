@@ -23,12 +23,13 @@
     <p>{{ course.description }}</p>
     <div class="row-container">
         <div class="row">
-            <div class="row-item">A</div>
-            <div class="row-item">B</div>
+            <div class="row-item"><a href = "{{url_for('course.show_course',course=course.department + course.course_number|string)}}"> Post</a></div>
+
+            <div class="row-item"><a href = "{{url_for('course.show_resources',course=course.department + course.course_number|string)}}">Resources</a></div>
         </div>
         <div class="row">
-            <div class="row-item">C</div>
-            <div class="row-item">D</div>
+            <div class="row-item"><a href = "{{url_for('course.showmembers',course=course.department + course.course_number|string)}}">Members</a></div>
+            <div class="row-item"><a href = "{{url_for('course.createPost',course=course.department + course.course_number|string)}}">Create Post</a></div>
         </div>
     </div>
 </div>
