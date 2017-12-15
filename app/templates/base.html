@@ -32,7 +32,7 @@
           </div>
         </div>
       </span>
-      <h1>general</h1>
+      <h1>{% block title_bar %}{% endblock %}</h1>
       <span>
         {% if not current_user.is_authenticated %}
         <div>

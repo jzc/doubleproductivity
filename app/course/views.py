@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 
 from . import course
 from .forms import ResourceUploadForm, PostForm 
-from .. import db
+from .. import db, flash_errors
 from ..models import Course, Resource, Post
 
 course_regex = re.compile("([A-Za-z]{4})([0-9]{4})")
@@ -27,12 +27,6 @@ def show_course(course):
 def show_resources(course):
     course = get_course(course)
     return render_template("resources.html", resources=course.resources)
-#     return """
-# <object data="{0}" type="application/pdf" width="100%" height="100%">
-#    <p><b>Example fallback content</b>: This browser does not support PDFs. Please download the PDF to view it: <a href="{0}">Download PDF</a>.</p>
-# </object>
-# """.format(url_for("home.download_file", filename=Resource.query.first().get_file_path()))
-
 
 @course.route("/<course>/resources/upload", methods=["GET", "POST"])
 def upload_resource(course):

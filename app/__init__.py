@@ -26,6 +26,9 @@ def create_app(config_name):
     from .course import course as course_blueprint
     app.register_blueprint(course_blueprint, url_prefix="/course")
 
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix="/api")
+
     return app
 
 def flash_errors(form):

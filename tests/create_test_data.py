@@ -10,13 +10,13 @@ def create_test_data(db, models):
     # create some courses
     courses = []
     with open("%s/courses.csv" % os.path.dirname(__file__)) as f:
-        next(f)
-        for line in f:
-            tokens = line.strip().split(",")
+        r = csv.reader(f)
+        for department, course_number, course_name, description in r:
             data = {
-                "department": tokens[0],
-                "course_number": tokens[1],
-                "course_name": tokens[2],
+                "department": department,
+                "course_number": course_number,
+                "course_name": course_name,
+                "description": description,
             }
             c = models["Course"](**data)
             courses.append(c)

@@ -3,14 +3,13 @@ import os
 from flask import render_template, send_from_directory, current_app
 
 from . import home
-from ..models import User, Post
+from ..models import User, Post, Course
 from flask_login import current_user, login_required
 
 @home.route("/")
 def show_home():
-    posts = Post.query.all()
-    posts = [p for p in posts if len(p.title.split()) < 15]
-    return render_template("index.html", posts=posts)
+    courses = Course.query.all()
+    return render_template("index.html", courses=courses)
 
 @home.route('/uploads/<filename>')
 def download_file(filename):

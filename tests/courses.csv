@@ -1,9 +1,8 @@
-department,number,name
-CSCI,1300,CS1
-CSCI,2270,Data Structures
-CSCI,2400,Computer Systems
-CSCI,3022,Intro to Data Science
-CSCI,2824,Discrete Structures
-CSCI,3308,Software Development
-CSCI,3104,Algorithms
-ATOC,1050,Weather and Atmosphere
+"CSCI","1300","CS1: Starting Computing","Teaches techniques for writing computer programs in higher level programming languages to solve problems of interest in a range of application domains. Intended for students with little to no experience in computing or programming."
+"CSCI","2270","Data Structures","Studies data abstractions (e.g., stacks, queues, lists, trees) and their representation techniques (e.g., linking, arrays). Introduces concepts used in algorithm design and analysis including criteria for selecting data structures to fit their applications."
+"CSCI","2400","Computer Systems","Covers how programs are represented and executed by modern computers, including low-level machine representations of programs and data, an understanding of how computer components and the memory hierarchy influence performance."
+"CSCI","3022","Intro to Data Science","Introduces students to the tools methods and theory behind extracting insights from data using computer science algorithms. Covers algorithms that maximize likelihood objective functions; linear prediction algorithms; making decisions based on data assembled from large datasets; discovering and quantifying connections between observations in real-world data such as text and images; representing and manipulating data on a computer."
+"CSCI","2824","Discrete Structures","Covers foundational materials for computer science that is often assumed in advanced courses. Topics include set theory, Boolean algebra, functions and relations, graphs, propositional and predicate calculus, proofs, mathematical induction, recurrence relations, combinatorics, discrete probability. Focuses on examples based on diverse applications of computer science."
+"CSCI","3308","Software Development","Covers tools and practices for software development with a strong focus on best practices used in industry and professional development, such as agile methodologies, pair-programming and test-driven design. Students develop web services and applications while learning these methods and tools."
+"CSCI","3104","Algorithms","Covers advanced data structures, computational geometry, cryptography, dynamic programming, greedy algorithms, divide-and-conquer, graph algorithms (e.g., depth-first search), network algorithms (e.g., shortest paths), approximation algorithms."
+"ATOC","1050","Weather and Atmosphere","Introduces principles of modern meteorology for nonscience majors, with emphasis on scientific and human issues associated with severe weather events. Includes description, methods of prediction, and impacts of blizzards, hurricanes, thunderstorms, tornadoes, lightning, floods, and firestorms."
