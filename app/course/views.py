@@ -5,9 +5,9 @@ from flask import abort, render_template, url_for, current_app, flash, redirect
 from flask_login import current_user, login_required
 
 from . import course
-from .forms import ResourceUploadForm, PostForm 
+from .forms import ResourceUploadForm, PostForm, CommentForm
 from .. import db
-from ..models import Course, Resource, Post
+from ..models import Course, Resource, Post, Comment
 
 course_regex = re.compile("([A-Za-z]{4})([0-9]{4})")
 
@@ -54,11 +54,19 @@ def upload_resource(course):
     flash_errors(form)
     return render_template("upload_resource.html", form=form)
 
-@course.route("/<course>/post/<id>")
+
+@course.route("/<course>/post/<id>", methods=["POST","GET"])
 def show_post(course, id):
+    course_url = course
     course = get_course(course)
     post = Post.query.get(id)
-    return render_template("post.html",post=post)
+    form = CommentForm()
+    if form.validate_on_submit():
+        c=Comment(post=post,user=current_user,content=form.content.data)
+        db.session.add(c)
+        db.session.commit()
+        return redirect(url_for("course.show_post", course=course_url, id=id))
+    return render_template("post.html", post=post, form=form)
 
 @course.route("/<course>/create_post", methods=["POST","GET"])
 @login_required
@@ -86,3 +94,8 @@ def createPost(course):
         # TODO: flash?
         return redirect(url_for("course.show_post", course=course_url, id=new_post.id))
     return render_template("create_post.html", form=form)
+
+@course.route("/<course>/members")
+def showmembers(course):
+    course=get_course(course)
+    return render_template("members.html", course=course)

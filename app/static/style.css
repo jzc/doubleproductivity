@@ -404,3 +404,12 @@ body {
     flex: 20;
     padding: 5px;
 }
+
+
+.members a {
+    color: #ae903a ;
+    text-decoration: none;
+}
+.members li {
+    list-style: none;
+}
