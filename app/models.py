@@ -74,6 +74,9 @@ class User(db.Model, UserMixin):
         db.session.commit()
         return True
 
+    def class_str(self):
+        return ', '.join("%s %s" % (course.department, course.course_number) for course in self.courses)
+
 
 class Course(db.Model):
     __tablename__ = "courses"

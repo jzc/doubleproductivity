@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class = " members">
+<!-- <div class = " members" style="margin-right: 30px">
 	<ul>
         {% for user in course.users %}
         <li class=" card membernames">
@@ -14,6 +14,42 @@
         </li>
         {% endfor %}
     </ul>
+</div> -->
+<div id="posts">
+        <ul>
+            {% for user in course.users %}
+            <li class="card">
+                <div>
+                    <h1><a href="#">{{ user.first }} {{ user.last }}</a></h1>
+                </div>
+                <div>
+                    <h2>{{ user.username }}, {{ user.class_str() }}</a>
+                    </h2>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
 </div>
+<div id="info" class="card">
+        <div id="info-header">
+            <h1>{{ course.department.upper() }} {{ course.course_number }}</h1>
+            <div id="add-class">+</div>
+        </div>
+        <p>{{ course.description }}</p>
+        <div class="row-container">
+            <div class="row">
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_course',course=course.department + course.course_number|string)}}"> Posts</a></div>
+    
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_resources',course=course.department + course.course_number|string)}}">Resources</a></div>
+            </div>
+            <div class="row">
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.showmembers',course=course.department + course.course_number|string)}}">Members</a></div>
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.createPost',course=course.department + course.course_number|string)}}">Create Post</a></div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
+
+{% block title_bar %} <a href="{{url_for('course.show_course',course=course.department + course.course_number|string)}}">{{course.course_name}}</a> {% endblock %}
+{% block title %} Members {% endblock %}

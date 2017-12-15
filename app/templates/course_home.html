@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <div id="posts">
     <ul>
-        {% for post in course.posts %}
+        {% for post in course.posts|reverse %}
         <li class="card">
             <div>
                 <h1><a href="{{ url_for('course.show_post', course=post.course.department + post.course.course_number|string,id=post.id ) }}">{{ post.title }}</a></h1>
@@ -23,16 +23,16 @@
     <p>{{ course.description }}</p>
     <div class="row-container">
         <div class="row">
-            <div class="row-item"><a href = "{{url_for('course.show_course',course=course.department + course.course_number|string)}}"> Post</a></div>
+            <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_course',course=course.department + course.course_number|string)}}"> Posts</a></div>
 
-            <div class="row-item"><a href = "{{url_for('course.show_resources',course=course.department + course.course_number|string)}}">Resources</a></div>
+            <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_resources',course=course.department + course.course_number|string)}}">Resources</a></div>
         </div>
         <div class="row">
-            <div class="row-item"><a href = "{{url_for('course.showmembers',course=course.department + course.course_number|string)}}">Members</a></div>
-            <div class="row-item"><a href = "{{url_for('course.createPost',course=course.department + course.course_number|string)}}">Create Post</a></div>
+            <div class="row-item" style="flex:1"><a href = "{{url_for('course.showmembers',course=course.department + course.course_number|string)}}">Members</a></div>
+            <div class="row-item" style="flex:1"><a href = "{{url_for('course.createPost',course=course.department + course.course_number|string)}}">Create Post</a></div>
         </div>
     </div>
 </div>
 {% endblock %}
 
-{% block title_bar %} {{course.course_name}} {% endblock %}
+{% block title_bar %} <a href="{{url_for('course.show_course',course=course.department + course.course_number|string)}}">{{course.course_name}}</a> {% endblock %}

@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="resources">
+<div class="resources" style="margin-right: 30px">
     <ul>
-        {% for resource in resources %}
+        {% for resource in resources|reverse %}
         <li class="card">
             <div class="thumb">
                 {% if resource.thumb_filename %}
@@ -18,4 +18,24 @@
         {% endfor %}
     </ul>
 </div>
+<div id="info" class="card">
+        <div id="info-header">
+            <h1>{{ course.department.upper() }} {{ course.course_number }}</h1>
+            <div id="add-class">+</div>
+        </div>
+        <p>{{ course.description }}</p>
+        <div class="row-container">
+            <div class="row">
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_course',course=course.department + course.course_number|string)}}"> Posts</a></div>
+    
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.show_resources',course=course.department + course.course_number|string)}}">Resources</a></div>
+            </div>
+            <div class="row">
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.showmembers',course=course.department + course.course_number|string)}}">Members</a></div>
+                <div class="row-item" style="flex:1"><a href = "{{url_for('course.upload_resource',course=course.department + course.course_number|string)}}">Create Resource</a></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+
+{% block title_bar %} <a href="{{url_for('course.show_course',course=course.department + course.course_number|string)}}">{{course.course_name}}</a> {% endblock %}

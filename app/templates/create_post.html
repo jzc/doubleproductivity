@@ -8,8 +8,8 @@
 			{{ form.csrf_token }}
 			<div align="left">{{ form.title.label(class="form-label") }}<br>{{ form.title(class="create-post-field") }}</div>
 			<div align="left">{{ form.content.label(class="form-label") }}<br>{{ form.content(class="create-post-field", style="padding:0px") }}</div>
-			<div align="left">{{ form.is_link.label(class="check-label") }}{{ form.is_link() }}</div>
-			<div align="left">{{ form.category.label(class="check-label") }}{{ form.category() }}</div>
+{# 			<!-- <div align="left">{{ form.is_link.label(class="check-label") }}{{ form.is_link() }}</div> #}
+{#			<div align="left">{{ form.category.label(class="check-label") }}{{ form.category() }}</div> --> #}
 			<div>{{ form.submit() }}
 		</form>
 	</div>
@@ -17,3 +17,6 @@
 
 
 {% endblock %}
+
+{% block title_bar %} <a href="{{url_for('course.show_course',course=course.department + course.course_number|string)}}">{{course.course_name}}</a> {% endblock %}
+{% block title %} Create a post {% endblock %}

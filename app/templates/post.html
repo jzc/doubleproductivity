@@ -30,7 +30,7 @@
  -->
 	</form>
 
-	{% for comment in post.comments %}
+	{% for comment in post.comments|reverse %}
 	<div class = "card post_comments">
 	{{comment.content}}
 	<h2>by
@@ -41,3 +41,6 @@
 </div>
 
 {% endblock %}
+
+{% block title_bar %} <a href="{{url_for('course.show_course',course=course.department + course.course_number|string)}}">{{course.course_name}}</a> {% endblock %}
+{% block title %} {{ post.title }} {% endblock %}
