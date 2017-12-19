@@ -1,1 +1,1 @@
-web: gunicorn technicallyimpressive:app --log-file=-
+web: gunicorn 'technicallyimpressive:create_app(config_name="production")' --log-file=-
