@@ -12,6 +12,8 @@ flask-sqlalchemy = "*"
 flask-login = "*"
 flask-wtf = "*"
 gunicorn = "*"
+flask-heroku = "*"
+"psycopg2" = "*"
 
 
 [dev-packages]
